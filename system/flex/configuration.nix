@@ -10,6 +10,11 @@
       ./hardware-configuration.nix
     ];
 
+    nix = {
+      package = pkgs.nix;
+      settings.experimental-features = ["nix-command" "flakes"];
+    };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -46,7 +51,6 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  programs.sway.enable = true;
   services.xserver.displayManager.startx.enable = true;
 
   # Configure keymap in X11
